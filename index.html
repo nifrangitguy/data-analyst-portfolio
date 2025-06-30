@@ -29,7 +29,7 @@
       max-width: 1000px;
       margin: auto;
     }
-    h2 {
+    h2, h3, h4 {
       color: #203a43;
     }
     .project, .skill {
@@ -38,6 +38,9 @@
       padding: 1.5rem;
       margin-bottom: 1.5rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    ul, ol {
+      padding-left: 1.5rem;
     }
     footer {
       text-align: center;
@@ -60,7 +63,9 @@
 
   <section id="about">
     <h2>About Me</h2>
-    <p>I'm a passionate problem-solver with a strong ability to understand data beyond the surface. I specialize in uncovering insights and translating them into meaningful, actionable visuals using Power BI, SQL, and Python. Whether it's automating tasks or identifying inefficiencies, I drive clarity and better decision-making.</p>
+    <p>I'm a passionate problem-solver with a strong ability to understand data beyond the surface. I enjoy diving deep into datasets to uncover insights and translate them into meaningful, actionable visuals that align with stakeholder requirements.</p>
+    <p>With hands-on experience in data cleaning, transformation, and visualization using tools like Power BI, SQL, and Python (Pandas), I focus on delivering solutions that drive better decision-making and operational efficiency. I thrive in collaborative environments where curiosity, continuous learning, and impact-driven work are valued.</p>
+    <p>Whether it's automating repetitive tasks or identifying gaps in existing systems, I take initiative to implement practical solutions that improve performance and clarity across teams.</p>
   </section>
 
   <section id="skills">
@@ -88,27 +93,46 @@
         <li>Short-Term Daily Forecasting with Weekly Seasonality (6 months)</li>
       </ol>
       <p>Together, these models uncover both macro-level trends and micro-level seasonal patterns in IBM’s stock behavior.</p>
+
+      <h4>1. Monthly Forecast – Long-Term Trend Analysis</h4>
+      <p>The data was first resampled into monthly averages, and a 10-year forecast was generated using Prophet's default settings.</p>
+      <ul>
+        <li>Converted historical daily data into monthly closing averages using <code>.resample("ME").mean()</code>.</li>
+        <li>Trained a Prophet model on this aggregated data.</li>
+        <li>Forecasted the next 120 months (10 years) of closing price behavior.</li>
+        <li>Merged forecast with historical data for direct comparison.</li>
+        <li>Used <code>.plot_components()</code> to break down forecasted components.</li>
+      </ul>
+      <p><strong>Insights:</strong></p>
+      <ul>
+        <li>The trend component captures IBM’s overall growth or decline trajectory.</li>
+        <li>The forecast chart with confidence intervals shows increasing uncertainty over time.</li>
+        <li>Ideal for investors and planners wanting a macro view of long-term stock movement.</li>
+      </ul>
+
+      <h4>2. Daily Forecast – Weekly Seasonality Analysis</h4>
+      <p>To analyze short-term volatility, the data was modeled using daily frequency with explicit weekly seasonality enabled.</p>
+      <ul>
+        <li>Used <code>Prophet(weekly_seasonality=True)</code> to capture weekly cyclic patterns.</li>
+        <li>Forecasted the next 180 days of closing prices.</li>
+        <li>Visualized both the full forecast and component breakdown (trend + weekly).</li>
+      </ul>
+      <p><strong>Insights:</strong></p>
+      <ul>
+        <li>The weekly component reveals recurring patterns by day of week.</li>
+        <li>Helpful for short-term decisions like trading strategies or risk assessment.</li>
+      </ul>
+      <p><strong>Combined Understanding:</strong></p>
+      <ul>
+        <li>Monthly forecast = long-range outlook</li>
+        <li>Daily forecast = short-term fluctuation visibility</li>
+        <li><code>.plot_components()</code> isolates trend, seasonality, holidays/events</li>
+      </ul>
+      <p><strong>Portfolio Summary:</strong> “Using Prophet, I applied both long-term and short-term forecasting to IBM’s stock data. I first resampled the data monthly to forecast 10 years into the future, revealing overall trend movements and confidence intervals. Then, I performed a daily forecast with explicit weekly seasonality to uncover short-term behavioral patterns. Component breakdowns helped isolate trend and seasonality, giving business stakeholders both strategic and tactical insights.”</p>
     </div>
 
-    <div class="project">
-      <h3>IBM Stock Performance Analysis</h3>
-      <p>Used classification with bar and pie charts to evaluate IBM’s stock performance based on absolute thresholds and average-based categorization. Helped interpret consistency and trend direction.</p>
-    </div>
+    <!-- Additional projects will follow this same structure -->
 
-    <div class="project">
-      <h3>SA Health – Contract Forecasting (Power BI)</h3>
-      <p>Developed interactive Power BI dashboards to forecast price indices in healthcare procurement. Integrated time series forecasting with 90% confidence intervals for budgeting and vendor negotiations.</p>
-    </div>
-
-    <div class="project">
-      <h3>Inactive Items Forecast – SA Health</h3>
-      <p>Forecasted trends in inactive items using time series models. Analyzed procurement inefficiencies and supported catalog rationalization strategies with seasonality analysis.</p>
-    </div>
-
-    <div class="project">
-      <h3>Data Cleaning Automation – HCA Healthcare</h3>
-      <p>Built a Python pipeline to clean and classify healthcare spend data. Reduced processing time from hours to seconds and ensured scalable, traceable data preparation across 20+ suppliers.</p>
-    </div>
   </section>
 
   <footer>
